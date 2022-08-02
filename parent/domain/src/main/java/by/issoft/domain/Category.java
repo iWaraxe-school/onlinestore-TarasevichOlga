@@ -23,6 +23,15 @@ public class Category {
     public void setProductList(Product product) {
         this.productList.add(product);
     }
+
+    public void printProductList() {
+        System.out.println(String.format("%s", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+        System.out.println("Category: " + name + ".");
+        System.out.println(String.format("%s", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
+        for (Product product : productList) {
+            System.out.println(product.toString());
+        }
+    }
 }
 
 
