@@ -8,23 +8,30 @@ import java.util.List;
 
 public class ProductGenerator {
 
+        private Faker faker = new Faker();
 
-    public static List<Product> getProductList (int numberProducts) {
-        List<Product> products = new ArrayList<>(numberProducts);
-        Faker faker = new Faker();
+        public String getProductName (String name) {
+        switch (name) {
+                case "Bike":
+                        return faker.commerce().productName();
+                case "Scooter":
+                        return faker.esports().event();
+                case "Motorbike":
+                        return faker. lorem().fixedString(8);
+                default:
+                        return null;
+        }
+        }
 
-        String name = faker.commerce().productName();
-        double price = Double.parseDouble(faker.commerce().price());
-        double rate = faker.random().nextDouble();
+        public double getPrice() {return Double.parseDouble(faker.commerce().price());
+        }
 
-        return products;
+        public double getRate() {return faker.random().nextDouble();
+        }
 
 }
 
 
-
-
-}
 
 
 

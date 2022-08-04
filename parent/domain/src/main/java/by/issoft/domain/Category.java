@@ -20,7 +20,7 @@ public class Category {
         return productList;
     }
 
-    public void setProductList(Product product) {
+    public void addProductList(Product product) {
         this.productList.add(product);
     }
 
@@ -33,6 +33,3 @@ public class Category {
         }
     }
 }
-
-
-

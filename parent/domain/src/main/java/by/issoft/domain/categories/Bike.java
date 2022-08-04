@@ -2,11 +2,11 @@ package by.issoft.domain.categories;
 
 import by.issoft.domain.Category;
 
-public class Book extends Category {
+public class Bike extends Category {
 
-    public Book()
+    public Bike()
     {
-        super("Book");
+        super("Bike");
     }
 
 }
