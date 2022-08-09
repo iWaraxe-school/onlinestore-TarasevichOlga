@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
-    private String name;
+    private static String name;
     private List<Product> productList;
 
     public Category(String name) {
@@ -12,7 +12,7 @@ public class Category {
         this.productList = new ArrayList<>();
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
