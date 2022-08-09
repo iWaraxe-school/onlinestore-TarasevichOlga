@@ -32,14 +32,13 @@ public class RandomStorePopulator {
                         populator.getRate());
                 category.addProductList(product);
             }
-            this.store.addCategory(category);
+
         }
 
     }
 
     private Set<Category> createCategorySet() {
         Set<Category> productsToAdd = new HashSet<>();
-
 
 
         return productsToAdd;
