@@ -12,7 +12,7 @@ import java.util.Random;
 import java.util.Set;
 
 public class RandomStorePopulator {
-    private Store store;
+    Store store;
 
     public RandomStorePopulator(Store store) {
         this.store = store;
@@ -25,9 +25,9 @@ public class RandomStorePopulator {
 
         for (Category category : categorySet) {
             Random random = new Random();
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < random.nextInt(10) +1; i++) {
                 Product product = new Product(
-                        populator.getProductName(Category.getName()),
+                        populator.getProductName(category.getName()),
                         populator.getPrice(),
                         populator.getRate());
                 category.addProductList(product);
