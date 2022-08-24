@@ -25,7 +25,7 @@ public class RandomStorePopulator {
 
         for (Category category : categorySet) {
             Random random = new Random();
-            for (int i = 0; i < random.nextInt(10) +1; i++) {
+            for (int i = 0; i < random.nextInt(10) + 1; i++) {
                 Product product = new Product(
                         populator.getProductName(category.getName()),
                         populator.getPrice(),
@@ -34,14 +34,32 @@ public class RandomStorePopulator {
             }
 
         }
-
     }
 
     private Set<Category> createCategorySet() {
-        Set<Category> productsToAdd = new HashSet<>();
+        Set<Category> categoryToAdd = new HashSet<>();
 
+        Reflections reflections = new Reflections("by.issoft.domain.categories");
+        //Get all existing subtypes of Category
+        Set<Class<? extends Category>> subTypes = reflections.getSubTypesOf(Category.class);
+        System.out.println(subTypes);
 
-        return productsToAdd;
+        for (Class<? extends Category> type : subTypes) {
+            try {
+                Category category = type.getConstructor().newInstance();
+                categoryToAdd.add(category);
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(categoryToAdd);
+        return categoryToAdd;
     }
 
 }

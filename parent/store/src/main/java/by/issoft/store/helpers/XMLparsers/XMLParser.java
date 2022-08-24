@@ -10,6 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class XMLParser {
@@ -19,6 +20,7 @@ public class XMLParser {
 
 
     public Map<String, String> getFieldSortOrderMap() {
+        String sortTag = "sort";
         Map<String, String> fieldSortDirectionMap = new LinkedHashMap<>();
 
 
@@ -35,12 +37,21 @@ public class XMLParser {
             doc.getDocumentElement().normalize();
 
             // get <staff>
-            NodeList nodelist = doc.getElementsByTagName("sort");
+            Node node = doc.getElementsByTagName(sortTag).item(0);
+            NodeList sortProperties = node.getChildNodes();
 
-            for (int temp = 0; temp < list.getLength(); temp++) {
+            Element elementary;
+            for (int i = 0; i < sortProperties.getLength(); i++) {
 
-                Node node = nodelist.item(temp);
+                //get all child tag names and values from config file and add them in properties map
+                if (sortProperties.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                    elementary = (Element) sortProperties.item(i);
 
+                    String key = elementary.getTagName().toLowerCase(Locale.ROOT);
+                    String value = elementary.getTextContent().toUpperCase(Locale.ROOT);
+
+                    fieldSortDirectionMap.put(key, value);
+                }
             }
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
