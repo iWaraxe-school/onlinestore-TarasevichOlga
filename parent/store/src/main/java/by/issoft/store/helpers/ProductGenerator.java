@@ -8,10 +8,12 @@ import java.util.List;
 
 public class ProductGenerator {
 
-        private Faker faker = new Faker();
+        Faker faker = new Faker();
 
-        public String getProductName (String name) {
-        switch (name) {
+
+
+        public String getProductName (String name){
+                switch (name){
                 case "Bike":
                         return faker.commerce().productName();
                 case "Scooter":
@@ -30,6 +32,7 @@ public class ProductGenerator {
         }
 
 }
+
 
 
 

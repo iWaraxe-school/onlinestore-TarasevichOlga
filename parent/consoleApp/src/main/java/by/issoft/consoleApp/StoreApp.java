@@ -1,8 +1,20 @@
 package by.issoft.consoleApp;
 
-public class StoreApp {
-    public static void main(String[] args) {
+import by.issoft.store.Store;
+import by.issoft.store.helpers.RandomStorePopulator;
 
+
+public class StoreApp {
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException, NoSuchMethodException {
+        {
+            Store onlineStore = new Store();
+            RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
+            randomStorePopulator.FillInStore();
+            onlineStore.printCategoriesProducts();
+        }
     }
 }
+
+   
+
 
