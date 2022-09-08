@@ -25,4 +25,3 @@ public class Store extends org.reflections.Store {
         }
     }
 }
-
