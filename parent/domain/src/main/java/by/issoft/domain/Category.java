@@ -24,6 +24,7 @@ public class Category {
         this.productList.add(product);
     }
 
+
     public void printProductList() {
         System.out.println(String.format("%s", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"));
         System.out.println("Category: " + name + ".");
