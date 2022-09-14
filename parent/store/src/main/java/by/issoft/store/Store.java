@@ -13,9 +13,7 @@ public class Store {
 
         categoryList.add(category);
     }
-    public List<Category> getCategoriesList() {
-        return categoryList;
-    }
+
 
     public void printCategoriesProducts() {
         for (Category category : categoryList) {
