@@ -3,9 +3,6 @@ package by.issoft.store.helpers;
 import by.issoft.domain.Product;
 import com.github.javafaker.Faker;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ProductGenerator {
 
         Faker faker = new Faker();

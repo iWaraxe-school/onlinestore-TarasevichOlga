@@ -4,9 +4,8 @@ import by.issoft.domain.Category;
 
 public class Scooter extends Category {
 
-        public Scooter()
-        {
-            super("Scooter");
-        }
-
+    public Scooter() {
+        super("Scooter");
     }
+
+}
