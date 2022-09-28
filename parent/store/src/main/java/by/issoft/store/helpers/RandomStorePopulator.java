@@ -2,9 +2,8 @@ package by.issoft.store.helpers;
 
 import by.issoft.domain.Category;
 import by.issoft.domain.Product;
+import by.issoft.store.Store;
 import org.reflections.Reflections;
-import org.reflections.Store;
-
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
@@ -18,7 +17,7 @@ public class RandomStorePopulator {
         this.store = store;
     }
 
-    public void FillInStore() {
+    public void fillInStore() {
         ProductGenerator populator = new ProductGenerator();
         Set<Category> categorySet = createCategorySet();
 
@@ -32,7 +31,7 @@ public class RandomStorePopulator {
                         populator.getRate());
                 category.addProductList(product);
             }
-
+            store.addCategory(category);
         }
     }
 
@@ -61,5 +60,4 @@ public class RandomStorePopulator {
         System.out.println(categoryToAdd);
         return categoryToAdd;
     }
-
 }
