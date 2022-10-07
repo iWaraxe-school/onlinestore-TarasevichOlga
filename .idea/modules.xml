@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/parent/consoleApp/consoleApp.iml" filepath="$PROJECT_DIR$/parent/consoleApp/consoleApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/domain/domain.iml" filepath="$PROJECT_DIR$/parent/domain/domain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/onlinestore-TarasevichOlga.iml" filepath="$PROJECT_DIR$/.idea/onlinestore-TarasevichOlga.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/parent.iml" filepath="$PROJECT_DIR$/parent/parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/store/store.iml" filepath="$PROJECT_DIR$/parent/store/store.iml" />
     </modules>

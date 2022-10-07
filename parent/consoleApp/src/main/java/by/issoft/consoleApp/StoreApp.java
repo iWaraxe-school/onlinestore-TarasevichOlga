@@ -4,7 +4,7 @@ import by.issoft.store.Store;
 import by.issoft.store.helpers.RandomStorePopulator;
 import by.issoft.store.helpers.comparators.ProductComparator;
 
-import java.util.Map;
+import by.issoft.store.StoreInteraction;
 
 
 public class StoreApp {
@@ -14,7 +14,7 @@ public class StoreApp {
         randomStorePopulator.fillInStore();
         onlineStore.printCategoriesProducts();
 
-        ProductComparator productComparator = new ProductComparator(onlineStore);
+        /*ProductComparator productComparator = new ProductComparator(onlineStore);
 
 
         productComparator.getTop5(onlineStore);
@@ -23,12 +23,22 @@ public class StoreApp {
             productComparator.sortProducts(onlineStore);
         } catch (Exception e) {
             e.printStackTrace();
+
+        }*/
+
+        ProductComparator productComparator = new ProductComparator(onlineStore);
+
+        StoreInteraction storeInteraction = new StoreInteraction();
+
+        try {
+            storeInteraction.storeInteraction(onlineStore);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
     }
 }
 
-   
+
+
 
 

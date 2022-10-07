@@ -3,7 +3,11 @@ package by.issoft.store.helpers;
 import by.issoft.domain.Category;
 import by.issoft.domain.Product;
 import by.issoft.store.Store;
+
+
 import org.reflections.Reflections;
+
+
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
@@ -60,6 +64,4 @@ public class RandomStorePopulator {
         System.out.println(categoryToAdd);
         return categoryToAdd;
     }
-
-
 }

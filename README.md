@@ -5,7 +5,6 @@
 - [XML](https://en.wikipedia.org/wiki/XML)
 - [XML processing](https://docs.oracle.com/javase/tutorial/jaxp/)
 
-
 ## VideoLectures
 [Collections playlist](https://youtube.com/playlist?list=PL96uE92X-ozdXTE7PoMfFQJ2CBz-hv9YK)
 - [Collections, Lists, Sets, Unmodifiable Lists and Sets](https://youtu.be/boKGhpMjqUw)
