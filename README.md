@@ -5,6 +5,7 @@
 - [XML](https://en.wikipedia.org/wiki/XML)
 - [XML processing](https://docs.oracle.com/javase/tutorial/jaxp/)
 
+
 ## VideoLectures
 [Collections playlist](https://youtube.com/playlist?list=PL96uE92X-ozdXTE7PoMfFQJ2CBz-hv9YK)
 - [Collections, Lists, Sets, Unmodifiable Lists and Sets](https://youtu.be/boKGhpMjqUw)
@@ -19,6 +20,7 @@
 Starting extend our store. Please append ability user to interact with our store, while sending commands through read stream.
 Add support of such commands: 
 - `sort` - products from store according config. In resources folder create xml config file like
+
 ```
 xml
 <sort>
@@ -32,7 +34,6 @@ Config file can contains from 1 to N fields. Sort should be done using `Comparat
 - `top` - print top 5 products of whole store sorted via price desc
 - `quit` - exit app
 
-++Read this file when you have difficulty, or even before.
 ## Hints and FAQs
 ### Where to put classes?
 It is best to place new classes that will deal with reading the XML file in a separate package. Possible classes that will need to be created are `XMLParser` which will read from the `config.xml` file, `Comparator` which will sort the contents of the list based on the contents of `config.xml`, it would be a good idea to add an `enum` class , which will contain the possible types of sorting.
