@@ -1,7 +1,9 @@
 package by.issoft.store.helpers.XMLparsers;
 
-import javafx.scene.shape.Arc;
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -16,13 +18,10 @@ import java.util.Map;
 public class XMLParser {
 
     private static final String FILENAME = "parent/store/src/main/resources/config1.xml";
-    private static Arc list;
-
 
     public Map<String, String> getFieldSortOrderMap() {
         String sortTag = "sort";
         Map<String, String> fieldSortDirectionMap = new LinkedHashMap<>();
-
 
         try {
             // Instantiate the Factory
@@ -32,8 +31,6 @@ public class XMLParser {
 
             Document doc = db.parse(new File(FILENAME));
 
-            // optional, but recommended
-            // http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
             doc.getDocumentElement().normalize();
 
             // get <staff>
@@ -61,7 +58,3 @@ public class XMLParser {
     }
 
 }
-
-
-
-
