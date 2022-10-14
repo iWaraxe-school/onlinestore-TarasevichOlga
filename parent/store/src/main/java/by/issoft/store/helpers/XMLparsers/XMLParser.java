@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class XMLParser {
 
-    private static final String FILENAME = "parent/store/src/main/resources/config1.xml";
+    private static final String FILENAME = "parent/store/src/main/java/by/issoft/store/resources/config1.xml";
 
     public Map<String, String> getFieldSortOrderMap() {
         String sortTag = "sort";

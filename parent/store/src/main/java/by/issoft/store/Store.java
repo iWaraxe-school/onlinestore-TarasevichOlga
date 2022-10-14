@@ -12,6 +12,14 @@ public class Store extends org.reflections.Store {
         this.categoryList = new ArrayList<>();
     }
 
+    static class SingletoneHelper{
+        private static final Store UNIQUE_INSTANCE = new Store();
+    }
+
+    public static Store getInstance() {
+        return SingletoneHelper.UNIQUE_INSTANCE;
+    }
+
     public void addCategory(Category category) {
         categoryList.add(category);
     }

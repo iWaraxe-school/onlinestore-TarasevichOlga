@@ -1,17 +1,19 @@
 package by.issoft.store.helpers;
 
 import by.issoft.domain.Category;
+import by.issoft.domain.CategoryFactory;
+import by.issoft.domain.CategoryType;
 import by.issoft.domain.Product;
 import by.issoft.store.Store;
 import org.reflections.Reflections;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class RandomStorePopulator {
     Store store;
+
+    ProductGenerator productGenerator = new ProductGenerator();
 
     public RandomStorePopulator(Store store) {
         this.store = store;
@@ -60,4 +62,31 @@ public class RandomStorePopulator {
         System.out.println(categoryToAdd);
         return categoryToAdd;
     }
+
+    private Map<Category, Integer> createMapOfCategoryByFactory(){
+        Map<Category, Integer> mapOfCategoryByFactory = new HashMap<>();
+        CategoryFactory categoryFactory = new CategoryFactory();
+
+        for(CategoryType categoryType : CategoryType.values()){
+            mapOfCategoryByFactory.put(categoryFactory.getCategory(categoryType), productGenerator.setRandomInt());
+        }
+        return mapOfCategoryByFactory;
+    }
+
+    public void fillOutProductList() {
+        Map<Category, Integer> categoryProductList = createMapOfCategoryByFactory();
+
+        for(Map.Entry<Category, Integer> fillEntry : categoryProductList.entrySet()) {
+            for (int i = 0; i< fillEntry.getValue(); i++){
+                Product product = new Product(
+                        productGenerator.getProductName(fillEntry.getKey().getName()),
+                        productGenerator.getRate(),
+                        productGenerator.getPrice()
+                );
+                fillEntry.getKey().addProductList(product);
+            }
+            this.store.addCategory(fillEntry.getKey());
+        }
+    }
+
 }
