@@ -28,6 +28,10 @@ public class ProductGenerator {
         public double getRate() {return faker.random().nextDouble();
         }
 
+        public int setRandomInt(){
+                return faker.number().numberBetween(5, 10);
+        }
+
 }
 
 

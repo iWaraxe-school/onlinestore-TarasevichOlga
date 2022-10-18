@@ -9,14 +9,18 @@ import by.issoft.store.StoreInteraction;
 
 public class StoreApp {
     public static void main(String[] args) {
+
+        Store onlinestore = Store.getInstance();
+
+        System.out.println(onlinestore);
+
         Store onlineStore = new Store();
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
-        randomStorePopulator.fillInStore();
+        //randomStorePopulator.fillInStore();
+        randomStorePopulator.fillOutProductList();
         onlineStore.printCategoriesProducts();
 
         /*ProductComparator productComparator = new ProductComparator(onlineStore);
-
-
         productComparator.getTop5(onlineStore);
 
         try {
@@ -26,7 +30,6 @@ public class StoreApp {
 
         }*/
 
-        ProductComparator productComparator = new ProductComparator(onlineStore);
 
         StoreInteraction storeInteraction = new StoreInteraction();
 
@@ -37,8 +40,6 @@ public class StoreApp {
         }
     }
 }
-
-
 
 
 
