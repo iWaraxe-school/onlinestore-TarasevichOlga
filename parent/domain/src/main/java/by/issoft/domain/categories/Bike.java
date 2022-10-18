@@ -4,8 +4,7 @@ import by.issoft.domain.Category;
 
 public class Bike extends Category {
 
-    public Bike()
-    {
+    public Bike() {
         super("Bike");
     }
 

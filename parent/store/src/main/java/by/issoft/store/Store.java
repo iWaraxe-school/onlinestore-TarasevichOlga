@@ -2,6 +2,8 @@ package by.issoft.store;
 
 import by.issoft.domain.Category;
 
+import by.issoft.domain.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,4 +34,5 @@ public class Store extends org.reflections.Store {
             category.printProductList();
         }
     }
+
 }

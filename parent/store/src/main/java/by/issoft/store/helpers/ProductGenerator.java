@@ -3,15 +3,14 @@ package by.issoft.store.helpers;
 import by.issoft.domain.Product;
 import com.github.javafaker.Faker;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ProductGenerator {
 
-        private Faker faker = new Faker();
+        Faker faker = new Faker();
 
-        public String getProductName (String name) {
-        switch (name) {
+
+
+        public String getProductName (String name){
+                switch (name){
                 case "Bike":
                         return faker.commerce().productName();
                 case "Scooter":
@@ -34,6 +33,7 @@ public class ProductGenerator {
         }
 
 }
+
 
 
 
