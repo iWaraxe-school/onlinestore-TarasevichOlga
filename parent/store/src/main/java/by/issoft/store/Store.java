@@ -1,13 +1,9 @@
 package by.issoft.store;
 
 import by.issoft.domain.Category;
-import by.issoft.domain.Product;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collection;
-import java.util.stream.Collectors;
-
 
 public class Store extends org.reflections.Store {
     private List<Category> categoryList;
@@ -35,10 +31,5 @@ public class Store extends org.reflections.Store {
         for (Category category : categoryList) {
             category.printProductList();
         }
-    }
-
-    public List<Product> getAllProducts() {
-        return Store.getInstance().getCategoriesList().stream().map(Category::getProductList).
-                flatMap(Collection::stream).collect(Collectors.toList());
     }
 }

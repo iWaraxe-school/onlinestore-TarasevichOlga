@@ -23,11 +23,14 @@ public class StoreApp {
 
         /*ProductComparator productComparator = new ProductComparator(onlineStore);
         productComparator.getTop5(onlineStore);
+
         try {
             productComparator.sortProducts(onlineStore);
         } catch (Exception e) {
             e.printStackTrace();
+
         }*/
+
 
         StoreInteraction storeInteraction = new StoreInteraction();
 
@@ -47,7 +50,5 @@ public class StoreApp {
     }
 }
 
-
-   
 
 

@@ -19,6 +19,7 @@ public class XMLParser {
 
     private static final String FILENAME = "parent/store/src/main/java/by/issoft/store/resources/config1.xml";
 
+
     public Map<String, String> getFieldSortOrderMap() {
         String sortTag = "sort";
         Map<String, String> fieldSortDirectionMap = new LinkedHashMap<>();
