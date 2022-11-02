@@ -1,11 +1,12 @@
 package by.issoft.consoleApp;
 
+import by.issoft.store.Order;
 import by.issoft.store.Store;
 import by.issoft.store.helpers.RandomStorePopulator;
+import by.issoft.store.Multithreading.CleanUpThread;
 import by.issoft.store.helpers.comparators.ProductComparator;
 
 import by.issoft.store.StoreInteraction;
-
 
 public class StoreApp {
     public static void main(String[] args) {
@@ -30,11 +31,19 @@ public class StoreApp {
 
         StoreInteraction storeInteraction = new StoreInteraction();
 
+        final CleanUpThread cleanUpThread = new CleanUpThread(Order.getOrder());
+        new Thread(cleanUpThread).start();
+
+
         try {
             storeInteraction.storeInteraction(onlineStore);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        cleanUpThread.finish();
+
+
     }
 }
 
