@@ -18,21 +18,18 @@ public class StoreApp {
         Store onlineStore = new Store();
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(onlineStore);
         //randomStorePopulator.fillInStore();
+        StoreInteraction storeInteraction = new StoreInteraction();
         randomStorePopulator.fillOutProductList();
         onlineStore.printCategoriesProducts();
 
         /*ProductComparator productComparator = new ProductComparator(onlineStore);
         productComparator.getTop5(onlineStore);
-
         try {
             productComparator.sortProducts(onlineStore);
         } catch (Exception e) {
             e.printStackTrace();
-
         }*/
 
-
-        StoreInteraction storeInteraction = new StoreInteraction();
 
         final CleanUpThread cleanUpThread = new CleanUpThread(Order.getOrder());
         new Thread(cleanUpThread).start();
@@ -45,10 +42,5 @@ public class StoreApp {
         }
 
         cleanUpThread.finish();
-
-
     }
 }
-
-
-
