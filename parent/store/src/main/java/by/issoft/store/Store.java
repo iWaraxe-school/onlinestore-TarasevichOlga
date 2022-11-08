@@ -1,10 +1,8 @@
 package by.issoft.store;
 
 import by.issoft.domain.Category;
-import by.issoft.domain.CategoryFactory;
-import by.issoft.domain.CategoryType;
 import by.issoft.domain.Product;
-import by.issoft.store.helpers.ProductGenerator;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +11,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 
-public class Store extends org.reflections.Store {
-    private List<Category> categoryList;
-    private CopyOnWriteArrayList<Category> purchasedCategory;
+public class Store {
 
-    public Store() {
-        this.categoryList = new ArrayList<>();
-        this.purchasedCategory = new CopyOnWriteArrayList<>();
+    private List<Category> categoryList = new ArrayList<>();
+    private CopyOnWriteArrayList<Category> purchasedCategory = new CopyOnWriteArrayList<>();
+
+
+    // Singleton pattern
+    private Store () {
     }
 
     static class SingletoneHelper{
@@ -42,10 +41,8 @@ public class Store extends org.reflections.Store {
                 flatMap(Collection::stream).collect(Collectors.toList());
     }
 
-    public void printCategoriesProducts() {
-        for (Category category : categoryList) {
-            category.printProductList();
-        }
+    public void setProductCategoryList(Category category) {
+        this.categoryList.add(category);
     }
 
     public void printProduct(List<Product> products){
@@ -54,24 +51,32 @@ public class Store extends org.reflections.Store {
         }
     }
 
+    public void printCategoriesProducts() {
+        for (Category category : categoryList) {
+            category.printProductList();
+        }
+    }
+
     // Purchase's methods
 
-    public Category createRandomPurchaseGood(){
-        ProductGenerator productGenerator = new ProductGenerator();
-        Category category = new CategoryFactory().getCategory(CategoryType.randomDirection());
-        Product product = new Product(
-                productGenerator.getProductName(category.getName()),
-                productGenerator.getRate(),
-                productGenerator.getPrice()
-        );
-        category.addProductList(product);
-        return category;
+    public void addRandomPurchaseGood (List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 
-    public void putToOrder(){
-        this.purchasedCategory.add(createRandomPurchaseGood());
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Store [");
+        for (Category category : categoryList) {
+            sb.append("\n");
+            sb.append(category.toString());
+        }
+        return sb.append("\n]").toString();
     }
 
+    public void putToOrder(Category category) {
+        purchasedCategory.add(category);
+    }
 
     public void printPurchaseCollection(){
         System.out.println("Size of purchases is " + this.purchasedCategory.size());
@@ -84,6 +89,5 @@ public class Store extends org.reflections.Store {
     public void deleteFromOrderList(){
         this.purchasedCategory.clear();
     }
-
 
 }
