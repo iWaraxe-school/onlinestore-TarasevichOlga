@@ -11,10 +11,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Order {
     private Store store = Store.getInstance();
     private static Order order = null;
-    private List<Product> productList = store.getAllProducts();
-    private List<Product> listOfOrders = new CopyOnWriteArrayList<>();
+    private List<Product> productList ;
+    private static List<Product> listOfOrders = new CopyOnWriteArrayList<>();
 
     private Order() {
+        productList = store.getAllProducts();
     }
 
     public static Order getOrder() {
@@ -28,19 +29,26 @@ public class Order {
         return listOfOrders;
     }
 
-    public synchronized void putToOrder() {
-        Random rand = new Random();
-        int randomIndex = rand.nextInt(productList.size() - 1);
-        Product randomElement = productList.get(randomIndex);
-        listOfOrders.add(randomElement);
-        productList.remove(randomIndex);
-        System.out.println("Remove from product list to orders that product: " + randomElement);
-        System.out.println("OrderList: " + getListOfOrders());
+    public Product getRandomProductFromStore () {
+        Random random = new Random();
+        List<Product> allProducts = getListOfOrders ();
+        return allProducts.get(random.nextInt(allProducts.size()));
     }
+
+    public void addPurchasedProduct (Product product) {listOfOrders.add(product);}
 
     public synchronized void deleteFromOrderList() {
         System.out.println("OrderList cleared");
         listOfOrders.clear();
         System.out.println("OrderList: " + getListOfOrders());
+    }
+
+    public void printOrderedProducts(){
+        System.out.println("*******************************************************************");
+        System.out.println("You have ordered following products: ");
+        System.out.println("___________________________________________________________________");
+        listOfOrders.forEach(System.out::println);
+        System.out.println("___________________________________________________________________\n");
+
     }
 }

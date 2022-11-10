@@ -1,6 +1,8 @@
 package by.issoft.store.Multithreading;
 
+import by.issoft.domain.Product;
 import by.issoft.store.Order;
+import by.issoft.store.Store;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +23,8 @@ public class CreateOrderThread implements Runnable{
         int i = (int) (1 + Math.random()*29);
         log.info("New good will be added to the purchases in " + i + " seconds.");
         TimeUnit.SECONDS.sleep(i);
-        order.putToOrder();
+        Product purchasedProduct = order.getRandomProductFromStore();
+        System.out.println("Ordered product" + purchasedProduct);
+        order.addPurchasedProduct(purchasedProduct);
     }
 }

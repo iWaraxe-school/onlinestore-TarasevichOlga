@@ -6,10 +6,7 @@ import by.issoft.domain.CategoryType;
 import by.issoft.domain.Product;
 import by.issoft.store.Store;
 
-
 import org.reflections.Reflections;
-
-
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -77,7 +74,7 @@ public class RandomStorePopulator {
         return mapOfCategoryByFactory;
     }
 
-    public void fillOutProductList() {
+    public void  fillOutProductList() {
         Map<Category, Integer> categoryProductList = createMapOfCategoryByFactory();
 
         for(Map.Entry<Category, Integer> fillEntry : categoryProductList.entrySet()) {
@@ -92,5 +89,4 @@ public class RandomStorePopulator {
             this.store.addCategory(fillEntry.getKey());
         }
     }
-
 }

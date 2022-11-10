@@ -1,5 +1,6 @@
 package by.issoft.store;
 
+import by.issoft.store.Multithreading.CreateOrderThread;
 import by.issoft.store.helpers.comparators.ProductComparator;
 import by.issoft.store.helpers.RandomStorePopulator;
 
@@ -13,7 +14,8 @@ public class StoreInteraction {
 
         ProductComparator productComparator = new ProductComparator(store);
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(store);
-        randomStorePopulator.fillInStore();
+
+        randomStorePopulator.fillOutProductList();
 
         try {
 
@@ -23,15 +25,19 @@ public class StoreInteraction {
 
             while (console) {
 
-                System.out.println("The store interacts with using next commands: sort, top, quit/q:");
+                System.out.println("The store interacts with using next commands: sort, top, order, quit:");
                 String command = bufferedReader.readLine();
-
+                System.out.println("Your command is: " + command);
                 switch (command) {
                     case "sort":
                         productComparator.sortProducts(store);
                         break;
                     case "top":
                         productComparator.getTop5(store);
+                        break;
+                    case "order":
+                        System.out.println("Order is created\n");
+                        new CreateOrderThread(Order.getOrder());
                         break;
                     case "quit":
                         bufferedReader.close();
@@ -47,3 +53,7 @@ public class StoreInteraction {
         }
     }
 }
+
+
+
+

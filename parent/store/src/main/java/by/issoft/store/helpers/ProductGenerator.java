@@ -7,8 +7,6 @@ public class ProductGenerator {
 
         Faker faker = new Faker();
 
-
-
         public String getProductName (String name){
                 switch (name){
                 case "Bike":
