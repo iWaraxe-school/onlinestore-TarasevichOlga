@@ -37,7 +37,8 @@ public class StoreInteraction {
                         break;
                     case "order":
                         System.out.println("Order is created\n");
-                        new CreateOrderThread(Order.getOrder());
+                        Runnable createOrderThread = new CreateOrderThread(Order.getOrder());
+                        new Thread(createOrderThread).start();
                         break;
                     case "quit":
                         bufferedReader.close();

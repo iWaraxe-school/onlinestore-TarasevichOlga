@@ -14,6 +14,14 @@ public class Order {
     private List<Product> productList ;
     private static List<Product> listOfOrders = new CopyOnWriteArrayList<>();
 
+    static class SingletoneHelper{
+        private static final Order PURCHASED_PRODUCTS_STORAGE = new Order();
+    }
+
+    public static Order getInstance() {
+        return Order.SingletoneHelper.PURCHASED_PRODUCTS_STORAGE;
+    }
+
     private Order() {
         productList = store.getAllProducts();
     }
@@ -31,7 +39,7 @@ public class Order {
 
     public Product getRandomProductFromStore () {
         Random random = new Random();
-        List<Product> allProducts = getListOfOrders ();
+        List<Product> allProducts = Store.getInstance().getAllProducts();
         return allProducts.get(random.nextInt(allProducts.size()));
     }
 

@@ -1,7 +1,8 @@
 package by.issoft.store;
 
 public enum KindSorting {
-    SORT("sort"), TOP5("top");
+    SORT("sort"),
+    TOP5("top");
 
     private final String value;
 
