@@ -1,6 +1,7 @@
 package by.issoft.store;
 
 import by.issoft.store.Multithreading.CreateOrderThread;
+import by.issoft.store.helpers.XMLparsers.SQLHelper;
 import by.issoft.store.helpers.comparators.ProductComparator;
 import by.issoft.store.helpers.RandomStorePopulator;
 
@@ -14,6 +15,8 @@ public class StoreInteraction {
 
         ProductComparator productComparator = new ProductComparator(store);
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(store);
+
+        SQLHelper sqlHelper = new SQLHelper();
 
         randomStorePopulator.fillOutProductList();
 
@@ -30,10 +33,10 @@ public class StoreInteraction {
                 System.out.println("Your command is: " + command);
                 switch (command) {
                     case "sort":
-                        productComparator.sortProducts(store);
+                        sqlHelper.selectSortFromProductTable();
                         break;
                     case "top":
-                        productComparator.getTop5(store);
+                        sqlHelper.selectTop5FromProductTable();
                         break;
                     case "order":
                         System.out.println("Order is created\n");

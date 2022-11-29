@@ -12,6 +12,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="store" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.mysql:mysql-connector-j:8.0.31" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.protobuf:protobuf-java:3.19.4" level="project" />
     <orderEntry type="module" module-name="domain" />
     <orderEntry type="library" name="Maven: org.reflections:reflections:0.10.2" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.28.0-GA" level="project" />
