@@ -5,16 +5,25 @@ import by.issoft.domain.CategoryFactory;
 import by.issoft.domain.CategoryType;
 import by.issoft.domain.Product;
 import by.issoft.store.Store;
+import by.issoft.store.helpers.XMLparsers.SQLHelper;
+import by.issoft.store.DataBase.SQLStatements;
 
 import org.reflections.Reflections;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
+import static by.issoft.store.DataBase.SQLInstructions.INSERT_INTO_PRODUCT;
+import static by.issoft.store.DataBase.SQLInstructions.SELECT_FROM_CATEGORY;
+
 public class RandomStorePopulator {
     Store store;
 
     ProductGenerator productGenerator = new ProductGenerator();
+
+    SQLHelper sqlHelper = new SQLHelper();
+    SQLStatements sqlStatements = new SQLStatements();
+
 
     public RandomStorePopulator(Store store) {
         this.store = store;
@@ -64,12 +73,21 @@ public class RandomStorePopulator {
         return categoryToAdd;
     }
 
-    private Map<Category, Integer> createMapOfCategoryByFactory(){
+    private Map<Category, Integer> createMapOfCategoryByFactory() {
+        // Connect to DB, insert rows into Category table from CategoryType enum
+        sqlHelper.startWorkWithDatabase();
+        sqlHelper.insertCategoryFromEnumCategoryTypeIntoCategoryTable();
+
+        // Select list of category from DataBase
+        List<String> categoryListDB = sqlHelper.getListOfCategoryFromCategoryTable(sqlStatements.executeStatementQuery(SELECT_FROM_CATEGORY));
+
         Map<Category, Integer> mapOfCategoryByFactory = new HashMap<>();
         CategoryFactory categoryFactory = new CategoryFactory();
 
-        for(CategoryType categoryType : CategoryType.values()){
-            mapOfCategoryByFactory.put(categoryFactory.getCategory(categoryType), productGenerator.setRandomInt());
+       /* for (CategoryType categoryType : CategoryType.values()) {
+            mapOfCategoryByFactory.put(categoryFactory.getCategory(categoryType), productGenerator.setRandomInt());*/
+        for(String categoryTypeFromDB : categoryListDB){
+            mapOfCategoryByFactory.put(categoryFactory.getCategory(CategoryType.valueOf(categoryTypeFromDB.toUpperCase())), productGenerator.setRandomInt());
         }
         return mapOfCategoryByFactory;
     }
@@ -79,14 +97,23 @@ public class RandomStorePopulator {
 
         for(Map.Entry<Category, Integer> fillEntry : categoryProductList.entrySet()) {
             for (int i = 0; i< fillEntry.getValue(); i++){
-                Product product = new Product(
+                /*Product product = new Product(
                         productGenerator.getProductName(fillEntry.getKey().getName()),
                         productGenerator.getRate(),
                         productGenerator.getPrice()
                 );
                 fillEntry.getKey().addProductList(product);
             }
-            this.store.addCategory(fillEntry.getKey());
+            this.store.addCategory(fillEntry.getKey());*/
+
+                sqlStatements.executeInsertIntoProductOrPurchaseTable(INSERT_INTO_PRODUCT,
+                        productGenerator.getProductName(fillEntry.getKey().getName()),
+                        productGenerator.getRate(),
+                        productGenerator.getPrice(),
+                        fillEntry.getKey().getName());
+            }
         }
     }
 }
+
+
