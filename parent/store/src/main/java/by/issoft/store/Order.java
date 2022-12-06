@@ -51,12 +51,12 @@ public class Order {
         System.out.println("OrderList: " + getListOfOrders());
     }
 
-    public void printOrderedProducts(){
+   /* public void printOrderedProducts(){
         System.out.println("*******************************************************************");
         System.out.println("You have ordered following products: ");
         System.out.println("___________________________________________________________________");
         listOfOrders.forEach(System.out::println);
         System.out.println("___________________________________________________________________\n");
 
-    }
+    }*/
 }

@@ -29,7 +29,7 @@ public class RandomStorePopulator {
         this.store = store;
     }
 
-    public void fillInStore() {
+    /*public void fillInStore() {
         ProductGenerator populator = new ProductGenerator();
         Set<Category> categorySet = createCategorySet();
 
@@ -71,7 +71,7 @@ public class RandomStorePopulator {
         }
         System.out.println(categoryToAdd);
         return categoryToAdd;
-    }
+    }*/
 
     private Map<Category, Integer> createMapOfCategoryByFactory() {
         // Connect to DB, insert rows into Category table from CategoryType enum

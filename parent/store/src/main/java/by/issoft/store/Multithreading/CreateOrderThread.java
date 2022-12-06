@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class CreateOrderThread implements Runnable{
 
-    static Order order;
+    /*static Order order;
 
     SQLHelper sqlHelper = new SQLHelper();
 
@@ -20,7 +20,7 @@ public class CreateOrderThread implements Runnable{
         CreateOrderThread.order = order;
     }
 
-    /*@SneakyThrows
+    *//*@SneakyThrows
     @Override
     public void run() {
         Product purchasedProduct = order.getRandomProductFromStore();
@@ -31,7 +31,7 @@ public class CreateOrderThread implements Runnable{
         log.info("New good will be added to the purchases in " + i + " seconds.");
         TimeUnit.SECONDS.sleep(i);
         System.out.println("Ordered closed with purchased product:" + purchasedProduct);
-    }*/
+    }*//*
 
     @SneakyThrows
     @Override
@@ -40,6 +40,22 @@ public class CreateOrderThread implements Runnable{
         log.info("New good will be added to the purchases in " + i + " seconds.");
         TimeUnit.SECONDS.sleep(i);
         sqlHelper.insertRandomProductIntoPurchaseTable();
+    }*/
+
+    static Store store;
+    SQLHelper sqlHelper = new SQLHelper();
+
+    public CreateOrderThread(Store store) {
+        CreateOrderThread.store = store;
     }
 
+    @SneakyThrows
+    @Override
+    public void run() {
+        int i = (int) (1 + Math.random()*29);
+        log.info("New good will be added to the purchases in " + i + " seconds.");
+        TimeUnit.SECONDS.sleep(i);
+//        store.setPurchaseGoods();
+        sqlHelper.insertRandomProductIntoPurchaseTable();
+    }
 }
