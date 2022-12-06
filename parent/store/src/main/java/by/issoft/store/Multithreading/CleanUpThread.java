@@ -26,8 +26,8 @@ public class CleanUpThread implements Runnable {
         while (needRun) {
             TimeUnit.MINUTES.sleep(2);
             log.info("The purchased collection was clean up.");
-            order.deleteFromOrderList();
-            order.printOrderedProducts();
+            //order.deleteFromOrderList();
+            //order.printOrderedProducts();
             sqlHelper.deleteFromPurchaseTable();
             sqlHelper.closeSQLConnection();
         }

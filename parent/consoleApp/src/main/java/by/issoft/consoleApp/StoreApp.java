@@ -18,15 +18,16 @@ public class StoreApp {
         Store store = Store.getInstance();
 
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator(store);
-        StoreInteraction storeInteraction = new StoreInteraction();
+        StoreInteraction storeInteraction = new StoreInteraction(store);
 
-        randomStorePopulator.fillInStore();
+        randomStorePopulator.fillOutProductList();
         store.printCategoriesProducts();
 
         final CleanUpThread cleanUpThread = new CleanUpThread(Order.getOrder());
         new Thread(cleanUpThread).start();
 
-        storeInteraction.storeInteraction(store);
+        //storeInteraction.storeInteraction(store);
+        storeInteraction.ConsoleInteraction();
         cleanUpThread.finish();
     }
 }

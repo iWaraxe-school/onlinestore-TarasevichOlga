@@ -90,10 +90,16 @@ public class SQLHelper {
         {
             sqlStatements.executeInsertIntoProductOrPurchaseTable(INSERT_INTO_PURCHASE,
                     rsRandomProduct.getString(1),
-                    rsRandomProduct.getInt(2),
-                    rsRandomProduct.getInt(3),
+                    rsRandomProduct.getDouble(2),
+                    rsRandomProduct.getDouble(3),
                     rsRandomProduct.getString(4));
         }
+    }
+
+    @SneakyThrows
+    public void selectFromPuchaseTable(){
+        System.out.println("SELECT PURCHASES FROM DB");
+        selectFromProductTable(sqlStatements.executeStatementQuery(SELECT_FROM_PURCHASE));
     }
 
     public void deleteFromPurchaseTable(){
@@ -110,4 +116,3 @@ public class SQLHelper {
     }
 
 }
-
