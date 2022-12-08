@@ -1,6 +1,7 @@
 package by.issoft.consoleApp;
 
 
+import by.issoft.store.HTTP.HTTPServer;
 import by.issoft.store.Order;
 import by.issoft.store.Store;
 import by.issoft.store.helpers.RandomStorePopulator;
@@ -23,11 +24,14 @@ public class StoreApp {
         randomStorePopulator.fillOutProductList();
         store.printCategoriesProducts();
 
-        final CleanUpThread cleanUpThread = new CleanUpThread(Order.getOrder());
-        new Thread(cleanUpThread).start();
+        //final CleanUpThread cleanUpThread = new CleanUpThread(Order.getOrder());
+        //new Thread(cleanUpThread).start();
+        HTTPServer httpServer = new HTTPServer();
+        httpServer.startHttpServer();
 
         //storeInteraction.storeInteraction(store);
         storeInteraction.ConsoleInteraction();
-        cleanUpThread.finish();
+        //cleanUpThread.finish();
+        httpServer.stopHTTPServer();
     }
 }

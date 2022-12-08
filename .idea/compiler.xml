@@ -15,7 +15,12 @@
       <module name="consoleApp" target="1.8" />
       <module name="domain" target="1.8" />
       <module name="parent" target="1.8" />
-      <module name="store" target="1.8" />
+      <module name="store" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="store" options="--add-modules java.net.http,java.base,java.sql" />
+    </option>
   </component>
 </project>
